@@ -1,0 +1,6 @@
+{
+    "workbench.tree.indent": 8,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": false,
+    "javascript.inlayHints.propertyDeclarationTypes.enabled": false,
+    "editor.defaultFormatter": "HookyQR.beautify"
+}
