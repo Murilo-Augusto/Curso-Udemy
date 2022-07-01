@@ -1,66 +1,41 @@
-import { StatusBar } from 'react-native';
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
+import Pessoa from './src/Pessoas'
 
 class App extends Component {
-	render() {
-		return (
-			<View style={styles.container} >
 
-				<Image
-					source={require('./src/biscoito.png')}
-					style={styles.img}
-				/>
+  constructor(props) {
+    super(props);
+    this.state = {
+      feed: [
+        {id:'1', nome: 'Matheus', idade: 50, email: 'matheus@matheus.com'},
+        {id:'2', nome: 'Joao', idade: 22, email: 'joao@joao.com'},
+        {id:'3', nome: 'Henrique', idade: 39, email: 'henrique@henrique.com'},
+        {id:'4', nome: 'Paulo', idade: 15, email: 'paulo@paulo.com'},
+        {id:'5', nome: 'JOSE', idade: 12, email: 'jose@jose.com'},
+      ]
+    };
+  }
 
-				<Text style={styles.textoFrase}>" Alguma frase aqui "</Text>
+  render() {
+    return (
+      <View style={styles.container}> 
 
-				<TouchableOpacity style={styles.botao}>
-					<View style={styles.btnArea}>
-						<Text style={styles.btnTexto}>Quebrar Biscoito</Text>
-					</View>
-				</TouchableOpacity>
+      <FlatList
+      data={this.state.feed}
+      keyExtractor={(item) => item.id}
+      renderItem={ ({item}) => <Pessoa data={item} /> }
+      />
 
-				<StatusBar />
-			</View>
-		);
-	}
+      </View>    
+    );
+  }
+
 }
-
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	img: {
-		width: 250,
-		height: 250,
-	},
-	textoFrase: {
-		fontSize: 20,
-		color: '#dd7b22',
-		margin: 30,
-		fontStyle: 'italic',
-		textAlign: 'center'
-	},
-	botao: {
-		width: 230,
-		height: 50,
-		borderWidth: 2,
-		borderColor: '#dd7b22',
-		borderRadius: 25
-	},
-	btnArea: {
-		flex: 1,
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center'
-	},
-	btnTexto: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#dd7b22'
-	}
+  container: {
+    flex:1,
+  }
 });
 
 export default App;
