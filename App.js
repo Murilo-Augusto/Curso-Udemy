@@ -68,7 +68,7 @@ class App extends Component {
           {sexoItem}
         </Picker>
 
-        <View style={styles.sliderConteiner}>
+        <View style={styles.sliderContainer}>
           <Text style={styles.sliderText} >Seu limite: R${this.state.sliderValue.toFixed(0)}</Text>
           <Slider
             minimumValue={500}
@@ -82,7 +82,7 @@ class App extends Component {
           />
         </View>
 
-        <View style={styles.switchConteiner} >
+        <View style={styles.switchContainer} >
           <Text style={styles.switchText} >Estudante: </Text>
           <Switch
             value={this.state.switchStatus}
@@ -91,7 +91,7 @@ class App extends Component {
           />
         </View>
 
-        <View style={styles.buttonConteiner}>
+        <View style={styles.buttonConteinar}>
           <TouchableOpacity
             style={styles.buttonComponent}
             onPress={this.mostrarDados}
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     color: 'gray'
   },
-  sliderConteiner: {
+  sliderContainer: {
     alignItems: 'center',
   },
   sliderText: {
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     margin: 10,
     color: 'orange'
   },
-  switchConteiner: {
+  switchContainer: {
     flexDirection: 'row',
   },
   switchText: {
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   swtichComponent: {
     margin: 2
   },
-  buttonConteiner: {
+  buttonContainer: {
     alignItems: 'center',
     marginTop: 100,
   },
