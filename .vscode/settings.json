@@ -6,5 +6,6 @@
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
-    "editor.tabSize": 8
+    "editor.tabSize": 4,
+    "editor.stickyTabStops": true
 }
