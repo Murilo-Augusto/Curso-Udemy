@@ -39,6 +39,10 @@ const styles = StyleSheet.create({
         width: 33,
         height: 33, 
     },
+    likes: {
+        fontWeight: 'bold',
+        marginLeft: 8
+    },
     descriptionView: {
         flexDirection: 'row',
         alignItems: 'center',
