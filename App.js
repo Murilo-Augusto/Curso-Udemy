@@ -1,99 +1,56 @@
 import { StatusBar } from 'react-native';
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Keyboard } from 'react-native';
-
-//Para instalar: npm install @react-native-async-storage/async-storage​
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Text, View, StyleSheet, TextInput, Button, Modal } from 'react-native';
+import Entrar from './src/Entrar'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: '',
-      nome: '',
+      modalVisible: false
     };
 
-    this.GravaNome = this.GravaNome.bind(this);
+    this.entrar = this.entrar.bind(this);
+    this.sair = this.sair.bind(this);
   }
 
-  //ComponentDidMount - Quando o componente é montado em tela
-  async componentDidMount() {
-    await AsyncStorage.getItem('nome').then( (value) => {
-      this.setState({nome: value});
-    })
+  entrar() {
+    this.setState({ modalVisible: true })
   }
 
-  //ComponentDidUpdate - toda vez que um state é atualizado fazer algo..
-  async componentDidUpdate(_, prevState) {
-    const nome = this.state.nome;
-
-    if(prevState !== nome) {
-      await AsyncStorage.setItem('nome', nome);
-    }
-  }
-  
-  GravaNome() {
-    this.setState({
-      nome: this.state.input
-    });
-    alert('Salvo com sucesso!');
-    Keyboard.dismiss();
+  sair() {
+    this.setState({ modalVisible: false })
   }
 
   render() {
-		return (
-			<View style={styles.container} >
+    return (
+      <View style={styles.container} >
+        <Button title='Entrar' onPress={this.entrar} />
 
-        <View style={styles.inputView}>
-          <TextInput 
-          style={styles.input}
-          value={this.state.input}
-          onChangeText={ (text) => this.setState({ input: text }) }
-          underlineColorAndroid='transparent'
-          />
+        <Modal transparent={true} animationType='fade' visible={this.state.modalVisible}>
+          <View style={styles.modalView}>
+            <Entrar fechar={this.sair} />
+          </View>
+        </Modal>
 
-          <TouchableOpacity onPress={this.GravaNome}>
-            <Text style={styles.textButton}>+</Text>
-          </TouchableOpacity>
-        </View>
-
-        <Text style={styles.nome}>{this.state.nome}</Text>
-
-				<StatusBar />
-			</View>
-		);
-	}
+        <StatusBar />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-    marginTop: 20,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-	},
-  inputView: {
-    flexDirection: 'row',
+    backgroundColor: '#DDD'
+  },
+  modalView: {
+    flex: 1,
+    margin: 15,
     alignItems: 'center',
-  },
-  input: {
-    width: 350,
-    height: 40,
-    borderColor: '#000',
-    borderWidth: 1,
-    padding: 10,
-
-  },
-  textButton: {
-    backgroundColor: '#222',
-    color: '#FFF',
-    height: 40,
-    padding: 10,
-    marginLeft: 4,
-  },
-  nome: {
-    marginTop: 15,
-    fontSize: 30,
-    alignItems: 'center'
+    justifyContent: 'center',
   }
 });
 
