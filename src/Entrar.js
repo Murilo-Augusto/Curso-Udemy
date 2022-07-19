@@ -1,43 +1,61 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default class src extends Component {
     render() {
         return (
-            <View style={styles.conteiner}>
-                <View style={styles.textView}>
-                    <Text style={styles.text}>Seja Bem-vindo!</Text>
-                </View>
-                <View style={styles.buttonView}>
-                    <Button style={styles.button} title='Sair' onPress={this.props.fechar}/>
-                </View>
+            <View style={styles.mainConteiner}>
+                <ScrollView>
+                    <TouchableOpacity style={styles.button} onPress={this.props.fechar}><Ionicons name="exit-outline" size={24} color="red" /></TouchableOpacity>
+                    <View style={styles.conteiner}>
+                        <Text style={styles.title}>Título</Text>
+                        <Text style={styles.content}>(CONTEUDO)Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an </Text>
+                    </View>
+                    <View style={styles.conteiner}>
+                        <Text style={styles.title}>Conteúdo</Text>
+                        <Text style={styles.content}>(CONTEUDO)Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It </Text>
+                        <Text style={styles.content}>(CONTEUDO)Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It </Text>
+                    </View>
+                </ScrollView>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create ({
-    conteiner: {
+    mainConteiner: {
+        flex: 1,
         width: '100%', 
         height: 350, 
-        
+        padding: 17,
         justifyContent: 'center',
-        borderRadius: 15,
+        borderRadius: 25,
         backgroundColor: 'rgba(52, 52, 52, 0.89)',
     },
-    text: {
+    button: {
+        alignSelf: 'flex-end'
+    },
+    conteiner: {
+        marginBottom: 20,
+    },
+    title: {
+        color: '#00E7FF',
+        fontWeight: 'bold',
+        fontSize: 18,
+        marginBottom: 5,
+    },
+    content: {
         color: '#FFF', 
-        fontSize: 28,
+        fontSize: 16,
         marginBottom: 10,
-        textAlign: 'center'
+        textAlign: 'justify',
     },
     textView: {
         flex: 1,
         justifyContent: 'center',
     },
-    button: {
-        borderRadius: 15
-    },
+    
     buttonView: {
         flex: 1,
         justifyContent: 'flex-end',
