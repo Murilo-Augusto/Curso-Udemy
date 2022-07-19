@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default class src extends Component {
+export default class Calcular extends Component {
     render() {
         return (
             <View style={styles.mainConteiner}>
